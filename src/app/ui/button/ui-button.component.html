@@ -1,0 +1,19 @@
+<button
+  mat-raised-button
+  [color]="variant === 'primary' ? 'primary' : undefined"
+  class="ui-button ui-button--{{ variant }}"
+  [class.full-width]="fullWidth"
+  [disabled]="disabled || loading"
+  [attr.type]="type"
+  (click)="onClick()"
+>
+  <span class="ui-button__content" [class.hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+  <mat-progress-spinner
+    *ngIf="loading"
+    diameter="18"
+    mode="indeterminate"
+    class="ui-button__spinner"
+  ></mat-progress-spinner>
+</button>

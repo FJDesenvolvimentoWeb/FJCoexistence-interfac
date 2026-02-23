@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.ui-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted, #9ca3af);
+}
+
+.ui-divider__line {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  flex: 1 1 auto;
+}
+
+.ui-divider__label {
+  white-space: nowrap;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}

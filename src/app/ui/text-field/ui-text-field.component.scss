@@ -1,0 +1,96 @@
+:host {
+  display: block;
+}
+
+.ui-text-field {
+  width: 100%;
+}
+
+/* 1 único bloco ::ng-deep, escopado pela sua classe */
+:host ::ng-deep .ui-text-field {
+  /* “Card” */
+  .mdc-text-field--outlined {
+    background: var(--color-card, #0f1724);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  /* espaçamento interno */
+  .mat-mdc-form-field-infix {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 44px;
+  }
+
+  /* outline (borda) */
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: rgba(255, 255, 255, 0.10) !important;
+    transition: border-color 160ms ease, border-width 160ms ease;
+  }
+
+  /* hover */
+  &:hover .mdc-notched-outline__leading,
+  &:hover .mdc-notched-outline__notch,
+  &:hover .mdc-notched-outline__trailing {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  /* focus */
+  &.mat-focused .mdc-notched-outline__leading,
+  &.mat-focused .mdc-notched-outline__notch,
+  &.mat-focused .mdc-notched-outline__trailing {
+    border-color: var(--color-primary, #3b82f6) !important;
+    border-width: 2px !important;
+  }
+
+  /* erro */
+  &.mat-form-field-invalid .mdc-notched-outline__leading,
+  &.mat-form-field-invalid .mdc-notched-outline__notch,
+  &.mat-form-field-invalid .mdc-notched-outline__trailing {
+    border-color: var(--color-error, #ef4444) !important;
+    border-width: 2px !important;
+  }
+
+  /* input + placeholder */
+  input.mdc-text-field__input {
+    color: var(--color-text, #ffffff) !important;
+    caret-color: var(--color-primary, #3b82f6) !important;
+    -webkit-text-fill-color: var(--color-text, #ffffff) !important;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.55) !important;
+      opacity: 1;
+    }
+
+    /* autofill */
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--color-text, #ffffff) !important;
+      transition: background-color 9999s ease-out 0s;
+    }
+  }
+
+  /* label (se usar mat-label) */
+  .mdc-floating-label {
+    color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  &.mat-focused .mdc-floating-label {
+    color: var(--color-primary, #3b82f6) !important;
+  }
+
+  &.mat-form-field-invalid .mdc-floating-label {
+    color: var(--color-error, #ef4444) !important;
+  }
+
+  /* hint/erro */
+  .mat-mdc-form-field-hint {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .mat-mdc-form-field-error {
+    color: var(--color-error, #ef4444);
+  }
+}

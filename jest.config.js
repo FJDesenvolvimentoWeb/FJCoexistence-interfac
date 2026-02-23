@@ -1,12 +1,13 @@
 module.exports = {
-  preset: 'ts-jest',
+  preset: 'jest-preset-angular',
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'json', 'node'],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx|js|mjs)$': 'ts-jest',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
+  transformIgnorePatterns: ['node_modules/(?!@angular|rxjs)'],
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts', 'jest-preset-angular/setup-jest'],
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   collectCoverage: true,
   coverageDirectory: 'coverage',

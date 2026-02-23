@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.ui-card {
+  background: var(--color-card, #1f2937);
+  color: var(--color-text, #fff);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.ui-card__header {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.ui-card__body {
+  color: var(--color-text-muted, #cbd5e1);
+}

@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0b0f12 0%, #050607 100%);
+  color: var(--color-text, #fff);
+}
+
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.02) 0%, transparent 40%), linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  z-index: 0;
+}
+
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+ui-card {
+  display: block;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 8px auto;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #2ee2c7, #10b981);
+  box-shadow: 0 8px 24px rgba(16,185,129,0.12);
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  text-align: center;
+  margin: 8px 0 0 0;
+  font-size: 20px;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0 0 12px 0;
+  color: var(--color-text-muted, #9ca3af);
+  font-size: 13px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.password-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--color-text-muted, #9ca3af);
+}
+
+.password-label {
+  font-weight: 600;
+}
+
+.forgot-link {
+  color: #10b981;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.spacer {
+  height: 8px;
+}
+
+.error-message {
+  margin-top: 8px;
+  color: #ff7a7a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.page-footer {
+  margin-top: 14px;
+  text-align: center;
+  color: var(--color-text-muted, #9ca3af);
+  font-size: 12px;
+}

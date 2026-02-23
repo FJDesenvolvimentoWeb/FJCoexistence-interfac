@@ -1,0 +1,36 @@
+:host {
+  display: inline-block;
+}
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ui-button.full-width,
+.full-width.ui-button {
+  display: flex;
+  width: 100%;
+}
+
+.ui-button__spinner {
+  color: white;
+}
+
+.ui-button--secondary {
+  background: transparent;
+  color: var(--color-text, #fff);
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ui-button--primary {
+  background: linear-gradient(180deg, #2ee2c7, #10b981) !important;
+  color: #082032 !important;
+}
+
+.ui-button__content.hidden {
+  visibility: hidden;
+}

@@ -1,0 +1,85 @@
+<div class="login-page">
+  <div class="bg-layer"></div>
+  <div class="login-wrapper">
+    <ui-card>
+      <ng-container card-header>
+        <div class="brand-icon" aria-hidden>
+          <svg
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H8l-5 3V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9z"
+              fill="#10B981"
+            />
+            <path
+              d="M7 9h10M7 13h7"
+              stroke="#082032"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </ng-container>
+
+      <div class="login-content">
+        <h1 class="title">FJDEV Software</h1>
+        <p class="subtitle">
+          Entre para gerenciar suas conversas e oportunidades
+        </p>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+          <ui-text-field
+            label="Email"
+            placeholder="seu@email.com"
+            [control]="email"
+          ></ui-text-field>
+
+          <div class="password-label-row">
+            <label class="password-label">Senha</label>
+            <a class="forgot-link" routerLink="/forgot-password"
+              >Esqueceu a senha?</a
+            >
+          </div>
+
+          <ui-text-field
+            [type]="'password'"
+            placeholder="•••••••"
+            [control]="password"
+          ></ui-text-field>
+
+          <ui-button
+            [type]="'submit'"
+            [variant]="'primary'"
+            [fullWidth]="true"
+            [loading]="loading"
+            [disabled]="form.invalid || loading"
+            (clicked)="onSubmit()"
+            >Entrar</ui-button
+          >
+
+          <div class="error-message" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+        </form>
+
+        <div class="spacer"></div>
+
+        <ui-divider-label [label]="'PRIMEIRA VEZ AQUI?'"></ui-divider-label>
+
+        <ui-button
+          [variant]="'secondary'"
+          [fullWidth]="true"
+          (clicked)="goRegister()"
+          >Criar conta</ui-button
+        >
+      </div>
+    </ui-card>
+
+    <footer class="page-footer">© 2026 FJDEV Software</footer>
+  </div>
+</div>
