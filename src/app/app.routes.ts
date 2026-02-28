@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './features/auth/forgot-password/forgot-
 
 export const routes: Routes = [
 	{ path: 'login', component: LoginPageComponent },
+	{ path: 'admin/login', component: LoginPageComponent, data: { authMode: 'admin' } },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'forgot-password', component: ForgotPasswordComponent },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },

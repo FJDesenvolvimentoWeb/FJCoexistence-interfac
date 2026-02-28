@@ -1,5 +1,54 @@
 <div class="placeholder-page">
-  <h2>Registro</h2>
-  <p>Em construção</p>
-  <a routerLink="/login">Voltar ao login</a>
+  <ui-card class="register-card">
+    <h2>Criar conta</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+      <ui-text-field
+        label="Nome"
+        placeholder="Empresa Teste"
+        [control]="name"
+      ></ui-text-field>
+
+      <ui-text-field
+        label="CNPJ"
+        placeholder="12345678901234"
+        [control]="cnpj"
+      ></ui-text-field>
+
+      <ui-text-field
+        label="Email"
+        placeholder="user@example.com"
+        [control]="email"
+      ></ui-text-field>
+
+      <ui-text-field
+        label="Senha"
+        [type]="'password'"
+        placeholder="senha123"
+        [control]="password"
+      ></ui-text-field>
+
+      <ui-text-field
+        label="Telefone"
+        placeholder="11999999999"
+        [control]="phone"
+      ></ui-text-field>
+
+      <ui-button
+        [type]="'submit'"
+        [variant]="'primary'"
+        [fullWidth]="true"
+        [loading]="(isLoading$ | async) ?? false"
+        [disabled]="form.invalid || ((isLoading$ | async) ?? false)"
+      >
+        Cadastrar
+      </ui-button>
+    </form>
+
+    <p class="error-message" *ngIf="(errorMessage$ | async) as errorMessage">
+      {{ errorMessage }}
+    </p>
+
+    <a routerLink="/login">Voltar ao login</a>
+  </ui-card>
 </div>

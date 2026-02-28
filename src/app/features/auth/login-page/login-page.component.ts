@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 import { UiModule } from '../../../ui/ui.module';
-import { AuthService } from '../../../core/auth/auth.service';
+import { AdminLogin, ClearError, Login } from '../../../core/auth/auth.actions';
+import { AuthSelectors } from '../../../core/auth/auth.selectors';
 
 @Component({
   standalone: true,
@@ -14,14 +17,21 @@ import { AuthService } from '../../../core/auth/auth.service';
 })
 export class LoginPageComponent {
   form: FormGroup;
-  loading = false;
-  errorMessage: string | null = null;
+  readonly isLoading$: Observable<boolean>;
+  readonly errorMessage$: Observable<string | null>;
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private store: Store,
+  ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+    this.isLoading$ = this.store.select(AuthSelectors.isLoading);
+    this.errorMessage$ = this.store.select(AuthSelectors.error);
   }
 
   get email() {
@@ -32,29 +42,32 @@ export class LoginPageComponent {
     return this.form.get('password') as FormControl;
   }
 
-  onSubmit() {
-    this.errorMessage = null;
+  onSubmit(): void {
+    if (this.store.selectSnapshot(AuthSelectors.isLoading)) {
+      return;
+    }
+
     if (!this.form.valid) {
       this.form.markAllAsTouched();
       return;
     }
 
-    const { email, password } = this.form.value;
-    this.loading = true;
-    this.auth.login(email, password).subscribe({
+    const { email, password } = this.form.getRawValue() as { email: string; password: string };
+    const isAdminLogin = this.route.snapshot.data['authMode'] === 'admin';
+    const action = isAdminLogin
+      ? new AdminLogin({ username: email, password })
+      : new Login({ username: email, password });
+
+    this.store.dispatch(new ClearError());
+    this.store.dispatch(action).subscribe({
       next: () => {
-        this.loading = false;
-        // Successful login - navigate or show success (mock)
-        console.log('login success');
+        void this.router.navigate(['/']);
       },
-      error: (err: any) => {
-        this.loading = false;
-        this.errorMessage = err?.message || 'Erro ao autenticar';
-      }
+      error: () => void 0,
     });
   }
 
-  goRegister() {
-    this.router.navigate(['/register']);
+  goRegister(): void {
+    void this.router.navigate(['/register']);
   }
 }

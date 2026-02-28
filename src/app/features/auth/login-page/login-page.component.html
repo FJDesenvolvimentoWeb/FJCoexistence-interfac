@@ -56,13 +56,12 @@
             [type]="'submit'"
             [variant]="'primary'"
             [fullWidth]="true"
-            [loading]="loading"
-            [disabled]="form.invalid || loading"
-            (clicked)="onSubmit()"
+            [loading]="(isLoading$ | async) ?? false"
+            [disabled]="form.invalid || ((isLoading$ | async) ?? false)"
             >Entrar</ui-button
           >
 
-          <div class="error-message" *ngIf="errorMessage">
+          <div class="error-message" *ngIf="(errorMessage$ | async) as errorMessage">
             {{ errorMessage }}
           </div>
         </form>
