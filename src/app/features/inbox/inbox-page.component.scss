@@ -1,0 +1,17 @@
+.page {
+  border: 1px solid var(--color-border, #1F2B4D);
+  background: var(--color-surface, #111A33);
+  border-radius: 16px;
+  padding: 24px;
+  color: var(--color-text, #F1F5F9);
+}
+
+.page__header h1 {
+  margin: 0 0 8px;
+}
+
+.page__header p {
+  margin: 0;
+  color: var(--color-text-muted, #B8C2D9);
+}
+

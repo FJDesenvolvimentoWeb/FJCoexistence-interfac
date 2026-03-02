@@ -1,0 +1,73 @@
+:host {
+  display: inline-flex;
+}
+
+.ui-logo {
+  --logo-blue: var(--color-accent, #1f6feb);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text);
+}
+
+.ui-logo--sm {
+  --logo-mark-size: 34px;
+  --logo-font-size: 0.98rem;
+}
+
+.ui-logo--md {
+  --logo-mark-size: 44px;
+  --logo-font-size: 1.2rem;
+}
+
+.ui-logo--lg {
+  --logo-mark-size: 62px;
+  --logo-font-size: 1.5rem;
+}
+
+.ui-logo__mark {
+  width: var(--logo-mark-size, 44px);
+  height: var(--logo-mark-size, 44px);
+  flex: 0 0 auto;
+}
+
+.ui-logo__ring {
+  stroke: var(--logo-blue);
+  stroke-width: 4.5;
+}
+
+.ui-logo__line {
+  stroke: var(--logo-blue);
+  stroke-width: 4.5;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ui-logo__text {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: var(--logo-font-size, 1.18rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.ui-logo__word--rocket {
+  color: var(--color-text, #f1f5f9);
+}
+
+.ui-logo__word--post {
+  color: var(--logo-blue);
+}
+
+.ui-logo:not(.ui-logo--stacked) .ui-logo__text {
+  flex-direction: row;
+  gap: 0.35rem;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.ui-logo--icon-only .ui-logo__text {
+  display: none;
+}

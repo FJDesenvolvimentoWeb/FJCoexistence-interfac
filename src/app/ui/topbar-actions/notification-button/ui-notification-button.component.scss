@@ -1,0 +1,15 @@
+:host {
+  display: inline-flex;
+}
+
+.notification-button {
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: transparent;
+}
+
+.notification-button:hover {
+  color: var(--color-text);
+  background: var(--color-surface-2);
+}

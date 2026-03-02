@@ -1,0 +1,24 @@
+<aside class="sidebar" [class.sidebar--mobile-open]="isMobileOpen">
+  <div class="sidebar__brand">
+    <ui-logo class="sidebar__brand-logo sidebar__brand-logo--full" [size]="'sm'" [stacked]="true"></ui-logo>
+    <ui-logo class="sidebar__brand-logo sidebar__brand-logo--icon" [size]="'sm'" [iconOnly]="true"></ui-logo>
+
+    <button class="sidebar__close" type="button" aria-label="Fechar menu" (click)="onRequestClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <nav class="sidebar__nav" aria-label="Navegacao principal">
+    <a
+      *ngFor="let item of menuItems"
+      [routerLink]="item.route"
+      routerLinkActive="sidebar__link--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="sidebar__link"
+      (click)="onNavigate()"
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="sidebar__link-label">{{ item.label }}</span>
+    </a>
+  </nav>
+</aside>

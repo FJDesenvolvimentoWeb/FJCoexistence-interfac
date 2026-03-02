@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  color: var(--color-text, #fff);
+  color: var(--color-text, #F1F5F9);
 }
 
 .register-card {
@@ -20,13 +20,14 @@
 
 .error-message {
   margin: 12px 0;
-  color: #ff7a7a;
+  color: var(--color-error, #EF4444);
   text-align: center;
 }
 
 .placeholder-page a {
   display: block;
   margin-top: 12px;
-  color: #10b981;
+  color: var(--color-accent, #1F6FEB);
   text-align: center;
 }
+

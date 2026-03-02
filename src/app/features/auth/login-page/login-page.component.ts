@@ -7,11 +7,12 @@ import { Store } from '@ngxs/store';
 import { UiModule } from '../../../ui/ui.module';
 import { AdminLogin, ClearError, Login } from '../../../core/auth/auth.actions';
 import { AuthSelectors } from '../../../core/auth/auth.selectors';
+import { UiLogoComponent } from '../../../ui/logo/ui-logo.component';
 
 @Component({
   standalone: true,
   selector: 'app-login-page',
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, UiModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, UiModule, UiLogoComponent],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
@@ -61,7 +62,7 @@ export class LoginPageComponent {
     this.store.dispatch(new ClearError());
     this.store.dispatch(action).subscribe({
       next: () => {
-        void this.router.navigate(['/']);
+        void this.router.navigate(['/app']);
       },
       error: () => void 0,
     });

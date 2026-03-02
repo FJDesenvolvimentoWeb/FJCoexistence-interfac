@@ -3,12 +3,12 @@
 }
 
 .ui-card {
-  background: var(--color-card, #1f2937);
-  color: var(--color-text, #fff);
+  background: var(--color-card, #111A33);
+  color: var(--color-text, #F1F5F9);
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
-  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.35);
+  border: 1px solid var(--color-border, #1F2B4D);
 }
 
 .ui-card__header {
@@ -17,5 +17,6 @@
 }
 
 .ui-card__body {
-  color: var(--color-text-muted, #cbd5e1);
+  color: var(--color-text-muted, #B8C2D9);
 }
+

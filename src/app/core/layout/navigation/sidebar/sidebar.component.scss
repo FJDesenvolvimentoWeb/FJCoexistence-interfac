@@ -1,0 +1,134 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 14px;
+  box-sizing: border-box;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px 20px;
+  margin-bottom: 14px;
+}
+
+.sidebar__brand-logo {
+  color: var(--color-text);
+}
+
+.sidebar__brand-logo--icon {
+  display: none;
+}
+
+.sidebar__close {
+  margin-left: auto;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--color-text);
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar__close:hover {
+  background: var(--color-surface-2);
+}
+
+.sidebar__nav {
+  display: grid;
+  gap: 4px;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  border-radius: 10px;
+  padding: 11px 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar__link:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.sidebar__link--active {
+  background: rgba(31, 111, 235, 0.2);
+  color: var(--color-accent);
+}
+
+.sidebar__link mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar__link-label {
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    padding: 16px 10px;
+  }
+
+  .sidebar__brand {
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .sidebar__brand-logo--full,
+  .sidebar__link-label {
+    display: none;
+  }
+
+  .sidebar__brand-logo--icon {
+    display: inline-flex;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 264px;
+    padding: 18px 14px;
+  }
+
+  .sidebar__brand-logo--full,
+  .sidebar__link-label {
+    display: inline-flex;
+  }
+
+  .sidebar__brand-logo--icon {
+    display: none;
+  }
+
+  .sidebar__close {
+    display: inline-flex;
+  }
+
+  .sidebar__link {
+    justify-content: flex-start;
+    padding-inline: 12px;
+  }
+}

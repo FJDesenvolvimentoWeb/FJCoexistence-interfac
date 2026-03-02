@@ -8,14 +8,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #0b0f12 0%, #050607 100%);
-  color: var(--color-text, #fff);
+  background: linear-gradient(180deg, #0A1226 0%, #111A33 100%);
+  color: var(--color-text, #F1F5F9);
 }
 
 .bg-layer {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(16,185,129,0.02) 0%, transparent 40%), linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: radial-gradient(ellipse at center, rgba(31, 111, 235, 0.1) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45));
   z-index: 0;
 }
 
@@ -39,12 +40,7 @@ ui-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
   margin: 0 auto 8px auto;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #2ee2c7, #10b981);
-  box-shadow: 0 8px 24px rgba(16,185,129,0.12);
 }
 
 .login-content {
@@ -62,7 +58,7 @@ ui-card {
 .subtitle {
   text-align: center;
   margin: 0 0 12px 0;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--color-text-muted, #B8C2D9);
   font-size: 13px;
 }
 
@@ -77,7 +73,7 @@ ui-card {
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--color-text-muted, #B8C2D9);
 }
 
 .password-label {
@@ -85,7 +81,7 @@ ui-card {
 }
 
 .forgot-link {
-  color: #10b981;
+  color: var(--color-accent, #1F6FEB);
   font-weight: 600;
   text-decoration: none;
 }
@@ -96,7 +92,7 @@ ui-card {
 
 .error-message {
   margin-top: 8px;
-  color: #ff7a7a;
+  color: var(--color-error, #EF4444);
   font-size: 13px;
   text-align: center;
 }
@@ -104,6 +100,7 @@ ui-card {
 .page-footer {
   margin-top: 14px;
   text-align: center;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--color-text-muted, #B8C2D9);
   font-size: 12px;
 }
+

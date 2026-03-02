@@ -1,0 +1,23 @@
+<div class="app-shell" [class.app-shell--mobile-open]="isMobileSidebarOpen">
+  <button
+    class="app-shell__backdrop"
+    type="button"
+    aria-label="Fechar menu lateral"
+    (click)="closeSidebar()"
+  ></button>
+
+  <app-sidebar
+    class="app-shell__sidebar"
+    [isMobileOpen]="isMobileSidebarOpen"
+    (navigated)="closeSidebar()"
+    (closeRequested)="closeSidebar()"
+  ></app-sidebar>
+
+  <div class="app-shell__main">
+    <app-topbar class="app-shell__topbar" (menuToggle)="toggleSidebar()"></app-topbar>
+
+    <main class="app-shell__content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

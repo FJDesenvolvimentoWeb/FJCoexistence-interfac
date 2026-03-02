@@ -1,0 +1,15 @@
+:host {
+  display: inline-flex;
+}
+
+.logout-button {
+  border-color: var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+}
+
+.logout-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(31, 111, 235, 0.12);
+}

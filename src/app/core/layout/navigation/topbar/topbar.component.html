@@ -1,0 +1,25 @@
+<header class="topbar">
+  <div class="topbar__left">
+    <button
+      mat-icon-button
+      class="topbar__menu"
+      type="button"
+      aria-label="Abrir menu lateral"
+      (click)="onMenuToggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <ui-logo class="topbar__brand topbar__brand--full" [size]="'sm'" [stacked]="true"></ui-logo>
+    <ui-logo class="topbar__brand topbar__brand--icon" [size]="'sm'" [iconOnly]="true"></ui-logo>
+  </div>
+
+  <div class="topbar__actions">
+    <ui-notification-button></ui-notification-button>
+    <div class="topbar__user">
+      <span class="topbar__user-label">Logado como</span>
+      <strong>{{ userDisplayName$ | async }}</strong>
+    </div>
+    <ui-logout-button (clicked)="logout()"></ui-logout-button>
+  </div>
+</header>

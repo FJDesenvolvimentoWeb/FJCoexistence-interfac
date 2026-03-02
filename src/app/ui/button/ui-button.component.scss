@@ -16,21 +16,30 @@
 }
 
 .ui-button__spinner {
-  color: white;
+  color: var(--color-text, #F1F5F9);
 }
 
 .ui-button--secondary {
   background: transparent;
-  color: var(--color-text, #fff);
+  color: var(--color-text, #F1F5F9);
   box-shadow: none;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--color-border, #1F2B4D);
 }
 
 .ui-button--primary {
-  background: linear-gradient(180deg, #2ee2c7, #10b981) !important;
-  color: #082032 !important;
+  background: var(--color-accent, #1F6FEB) !important;
+  color: var(--color-text, #F1F5F9) !important;
+}
+
+.ui-button--primary:hover {
+  background: var(--color-accent-hover, #1A5FD1) !important;
+}
+
+.ui-button--primary:active {
+  background: var(--color-accent-active, #174FB2) !important;
 }
 
 .ui-button__content.hidden {
   visibility: hidden;
 }
+

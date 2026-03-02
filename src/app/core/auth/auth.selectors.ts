@@ -1,5 +1,5 @@
 import { createSelector } from '@ngxs/store';
-import { AuthStateModel } from './auth.model';
+import { AuthStateModel, AuthUser } from './auth.model';
 import { AuthState } from './auth.state';
 
 export class AuthSelectors {
@@ -16,4 +16,11 @@ export class AuthSelectors {
   );
 
   static readonly error = createSelector([AuthState], (state: AuthStateModel) => state.error);
+
+  static readonly user = createSelector([AuthState], (state: AuthStateModel) => state.user);
+
+  static readonly userDisplayName = createSelector(
+    [AuthSelectors.user],
+    (user: AuthUser | null) => user?.name?.trim() || user?.email?.trim() || 'Usuario',
+  );
 }
