@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, from, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import {
   AuthTokenResponse,
@@ -15,6 +15,23 @@ type AuthOperation = 'login' | 'adminLogin' | 'register';
 export class AuthApiService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = environment.apiUrl;
+
+  checkBackendAvailability(): Observable<boolean> {
+    if (typeof window === 'undefined' || typeof fetch === 'undefined') {
+      return of(true);
+    }
+
+    return from(
+      fetch(this.baseUrl, {
+        method: 'GET',
+        mode: 'no-cors',
+        cache: 'no-store',
+      }),
+    ).pipe(
+      map(() => true),
+      catchError(() => of(false)),
+    );
+  }
 
   login(payload: LoginRequestDto): Observable<AuthTokenResponse> {
     return this.http

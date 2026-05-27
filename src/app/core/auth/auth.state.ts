@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { EMPTY, Observable, throwError } from 'rxjs';
-import { catchError, finalize, map, switchMap } from 'rxjs/operators';
+import { EMPTY, Observable, of, throwError } from 'rxjs';
+import { catchError, finalize, map, switchMap, tap } from 'rxjs/operators';
 import { AuthApiService } from './auth-api.service';
 import {
   AdminLogin,
@@ -53,9 +53,32 @@ export class AuthState {
   }
 
   @Action(LoadTokenFromStorage)
-  loadTokenFromStorage(ctx: StateContext<AuthStateModel>): void {
+  loadTokenFromStorage(ctx: StateContext<AuthStateModel>): Observable<void> {
     const token = this.tokenStorage.getToken();
-    ctx.patchState({ token });
+
+    if (!token) {
+      ctx.patchState({ token: null });
+      return of(void 0);
+    }
+
+    ctx.patchState({
+      isLoading: true,
+      error: null,
+    });
+
+    return this.authApi.checkBackendAvailability().pipe(
+      tap((isBackendAvailable) => {
+        ctx.patchState({ token: isBackendAvailable ? token : null });
+      }),
+      catchError(() => {
+        ctx.patchState({ token: null });
+        return of(void 0);
+      }),
+      map(() => void 0),
+      finalize(() => {
+        ctx.patchState({ isLoading: false });
+      }),
+    );
   }
 
   @Action(SetToken)
